@@ -53,7 +53,7 @@ console.log(req.body)
 app1.post('/userLogin',async(req,res)=>{
   const ret = await User.findOne({email:req.body.email}) 
 if(ret !== null && ret.password === req.body.password){
-  cons0le.log(ret)
+  console.log(ret)
   return res.json(ret)
 }
 else{
