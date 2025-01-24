@@ -44,12 +44,23 @@ app1.use(cors({
 }
 ));
 app1.post('/userSignup',async(req,res)=>{
-console.log("kamal")
-  // User.insertMany(req.body)
+console.log(req.body)
+   User.insertMany(req.body)
    return res.json({"code":10})
 
  })
+app1.post('/userLogin',async(req,res)=>{
 
+  const ret = await User.findOne({email:req.body.email}) 
+
+if(ret !== null && ret.password === req.body.password){
+  consle.log(ret)
+  return res.json(ret)
+}
+else{
+  return res.json({"code":0})
+}
+})
  
 app1.get('/getCurrentUser',async(req,res)=>{ 
   var filtered = jsonarr.filter(item => item.id !== req.session.data.id);
