@@ -38,7 +38,7 @@ app1.use(session({
   
 }))
 app1.use(cors({
-  origin: ['http://localhost:3000', 'https://your-production-domain.com'], // Add your frontend domains
+  origin: ['http://localhost:3000','http://localhost:3002','https://your-production-domain.com'], // Add your frontend domains
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
  credentials : true
 }));
