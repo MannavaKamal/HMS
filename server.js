@@ -45,7 +45,7 @@ app1.use(session({
 }))
 app1.use(cors({
    origin : ["*"],
-  methods : ["POST","GET"],
+ methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
    credentials : true
 }
 ));
