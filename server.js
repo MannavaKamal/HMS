@@ -25,7 +25,18 @@ mongoose.connect('mongodb+srv://2200032973:jJ4ixc5JEMXC8Dhi@cluster0.s8i0c8m.mon
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
-
+const userSchema = new mongoose.Schema({   
+    name: String,
+    email: String,
+    password:String,
+   age: Number,
+    weight: Number,  
+    height: Number,  
+    activity_level: String, 
+    medical_history: Array,
+    fitness_goals: Array
+});
+const User = mongoose.model('user', userSchema);
 app1.use(session({
   resave:true,
   saveUninitialized:true,
@@ -38,20 +49,24 @@ app1.use(cors({
    credentials : true
 }
 ));
-app1.get('/userSignup',async(req,res)=>{
- return res.json({"code":1})
+app1.post('/userSignup',async(req,res)=>{
+
+   User.insertMany(req.body)
+   return res.json({"code":1})
+
  })
 
-app1.post('/UserLogin',async(req,res)=>{
- var filtered = jsonarr.filter(item => item.id == req.body.num);
-if(filtered.length === 1){
-  req.session.data = filtered[0]
-   return res.json({"code":1})
+ app1.post('/userLogin',async(req,res)=>{
+
+  const ret = await User.findOne({email:req.body.email}) 
+
+if(ret !== null && ret.password === req.body.password){
+  
+  return res.json({"code":1})
 }
 else{
-   return res.json({"code":0})
- }
-
+  return res.json({"code":0})
+}
 })
 app1.get('/getCurrentUser',async(req,res)=>{ 
   var filtered = jsonarr.filter(item => item.id !== req.session.data.id);
