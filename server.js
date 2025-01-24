@@ -60,26 +60,27 @@ else{
 }
 })
  
-app1.get('/getCurrentUser',async(req,res)=>{ 
-  var filtered = jsonarr.filter(item => item.id !== req.session.data.id);
-  var filtered1 = jsonarr.filter(item => item.id == req.session.data.id);
-  props = {
-    "source":filtered1[0],
-    "destinations":filtered
-  }
-     return res.json(props)  
-  })
-  app1.post('/storeMessage',async(req,res)=>{
-    const user = jsonarr.find(item => item.id === req.session.data.id);
-    user.messages.push(req.body.message);  
-    return res.json({"code":1})  
- })
- app1.get('/getSession',async(req,res)=>{
-  if (req.session.data !== undefined) {
-    return res.json({"code":1})
-} else {
-  return res.json({"code":0})
-}
+app1.post("/addWeight",async(req,res)=>{
+  let weight = req.body.weight
+ let ret =  await User.findById(req.body._id);
+    let oldweight = ret.weight;
+   console.log(oldweight)
+    oldweight.push(weight)
+    console.log(oldweight)  // weights updates
+    await User.updateOne({ 
+         _id: req.body._id }, {
+        $set: {
+          weight: oldweight
+       },
+     }, { upsert: true });
+     return res.json({"code":1})
 })
+
+app1.post("/userWeights",async(req,res)=>{  
+ let ret =  await User.findById(req.body._id);
+ console.log(ret.weight)
+     return res.json(ret.weight)
+})
+
 app1.listen(5000,()=> console.log("route server at 5000"))
 
