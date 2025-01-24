@@ -38,8 +38,8 @@ app1.use(cors({
    credentials : true
 }
 ));
-app1.post('/userSignup',async(req,res)=>{
-
+app1.get('/userSignup',async(req,res)=>{
+ return res.json({"code":1})
  })
 
 app1.post('/UserLogin',async(req,res)=>{
