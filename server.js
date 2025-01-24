@@ -51,7 +51,7 @@ app1.use(cors({
 ));
 app1.post('/userSignup',async(req,res)=>{
 
-   User.insertMany(req.body)
+  // User.insertMany(req.body)
    return res.json({"code":1})
 
  })
