@@ -52,7 +52,7 @@ app1.use(cors({
 app1.get('/userSignup',async(req,res)=>{
 
   // User.insertMany(req.body)
-   return res.json({"code":1})
+   return res.json({"code":10})
 
  })
 
