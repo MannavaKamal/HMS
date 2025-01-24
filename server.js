@@ -72,5 +72,5 @@ app1.get('/getCurrentUser',async(req,res)=>{
   return res.json({"code":0})
 }
 })
-app1.listen(5000,()=> console.log("route server at 5000"))
+app1.listen(5000,()=> console.log("route server at 500"))
 
