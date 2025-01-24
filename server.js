@@ -82,5 +82,12 @@ app1.post("/userWeights",async(req,res)=>{
      return res.json(ret.weight)
 })
 
+app1.get("/getAllUsers",async(req,res)=>{  
+
+  const all = await User.find()
+  console.log(all)
+      return res.json(1)
+ })
+
 app1.listen(5000,()=> console.log("route server at 5000"))
 
