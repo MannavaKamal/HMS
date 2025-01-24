@@ -38,11 +38,10 @@ app1.use(session({
   
 }))
 app1.use(cors({
-   origin : ["*"],
- methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-   credentials : true
-}
-));
+  origin: ['http://localhost:3000', 'https://your-production-domain.com'], // Add your frontend domains
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+ credentials : true
+}));
 app1.post('/userSignup',async(req,res)=>{
 console.log(req.body)
    User.insertMany(req.body)
