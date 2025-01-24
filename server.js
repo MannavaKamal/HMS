@@ -10,14 +10,8 @@ const mongoose = require('mongoose');
 const app1 = express();
 app1.use(parser.json());
 app1.use(express.json());
-const server = http.createServer(app1);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:5173", // React App URL
-    methods: ["GET", "POST"],
-    credentials : true
-  }
-});
+
+
 
 // database
 mongoose.connect('mongodb+srv://2200032973:jJ4ixc5JEMXC8Dhi@cluster0.s8i0c8m.mongodb.net/HMS',{
@@ -49,7 +43,7 @@ app1.use(cors({
    credentials : true
 }
 ));
-app1.get('/userSignup',async(req,res)=>{
+app1.post('/userSignup',async(req,res)=>{
 console.log("kamal")
   // User.insertMany(req.body)
    return res.json({"code":10})
@@ -79,4 +73,4 @@ app1.get('/getCurrentUser',async(req,res)=>{
 }
 })
 app1.listen(5000,()=> console.log("route server at 5000"))
-server.listen(4000, () => console.log('Server running on http://localhost:4000'));
+
