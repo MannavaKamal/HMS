@@ -37,11 +37,7 @@ app1.use(session({
   secret:"for my project",
   
 }))
-app1.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3002','https://your-production-domain.com','https://hackathon-jashwanth176-jashwanth176s-projects.vercel.app/','https://hackathon-3h4lr6erh-jashwanth176s-projects.vercel.app/','https://hackathon-dun-eight.vercel.app/'], // Add your frontend domains
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
- credentials : true
-}));
+app1.use(cors({}));
 app1.post('/userSignup',async(req,res)=>{
 console.log(req.body)
    User.insertMany(req.body)
