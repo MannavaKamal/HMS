@@ -38,7 +38,7 @@ app1.use(session({
   
 }))
 app1.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3002','https://your-production-domain.com'], // Add your frontend domains
+  origin: ['http://localhost:3000','http://localhost:3002','https://your-production-domain.com','https://hackathon-jashwanth176-jashwanth176s-projects.vercel.app/','https://hackathon-3h4lr6erh-jashwanth176s-projects.vercel.app/'], // Add your frontend domains
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
  credentials : true
 }));
